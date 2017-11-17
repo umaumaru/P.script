@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+  /**
+   * 公用函数 判断type
+   * @param s
+   * @param sp
+   * @private
+   */
+    function _test_type(s,sp){
+        if(s !== sp){
+          throw Error("type is not "+ sp)
+        }
+    }
+
+  /**
+   * 作用域对象
+   * @type {{}}
+   * @private
+   */
+    var _BASE_CONTENT_N1 = {}
+    Object.defineProperty(_BASE_CONTENT_N1, "s", {
+      set : function(v){
+        debugger
+        console.log(typeof v)
+        _test_type(typeof v,'number')
+        _BASE_CONTENT_N1.s_clone = v
+      },
+      get : function () {
+        return _BASE_CONTENT_N1.s_clone
+      }
+    });
+    //编译
+    _BASE_CONTENT_N1.s = 100
+    //var s:number = 100
+    //console.log(s)
+    console.log(_BASE_CONTENT_N1)
+    var s = _BASE_CONTENT_N1.s
+</script>
+</body>
+</html>
